@@ -1,0 +1,222 @@
+# 0
+'''
+a = int(input())
+
+zero = [1,0,1]
+one = [0,1,1]
+
+def cal(num):
+    length = len(zero)
+    if length <= num:
+        for i in range(length, num+1):
+            zero.append(zero[i-1]+zero[i-2])#피보나치 규칙
+            one.append(one[i-1]+one[i-2])#피보나치 규칙
+    print("%d %d"%(zero[num],one[num]))
+
+for i in range(a):
+    k = int(input())
+    cal(k)
+'''
+#1
+#2579
+#1~2계단 가능 / 연속 3계단 x/ 마지막 계단 무조건 밟아
+max = 0
+s = []
+stair = int(input())
+for i in range(stair):
+    a = int(input())
+    s.append(a)
+    
+#-----------------------------------------------------
+
+stack_list = list()
+
+def push(data):
+    stack_list.append(data)
+def pop():
+    data = stack_list[-1]
+    del stack_list[-1]
+    return data
+for index in range(10):
+    push(index)
+print(stack_list)  # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+pop()  # 9
+print(stack_list)  # [0, 1, 2, 3, 4, 5, 6, 7, 8]
+
+#---------------------------------------------------
+#1929 소수구하기
+#시간 초과 고려를 안 할 경우
+# M, N = map(int, input().split())    #입력
+# anw = []                            #정답 배열
+# for i in range(M, N + 1):           #i가 의미하는거 입력한 M과 N까지의 숫자
+#     if i == 2:                      #2는 원래 소수
+#         anw.append(i)
+#     else:
+#         for j in range(2, i):       #j가 의미하는거 숫자 판별하는거
+#             if i % j == 0:          #1과 자기 자신 이외에 나누어 떨어지는게 생기면 소수가 아님
+#                 break
+#             elif j == i - 1:        #아닌 경우 소수
+#                 anw.append(i)
+# print(anw)
+#시간 초과 고려할 경우
+# M, N = map(int,input().split())     #입력
+# for i in range(M,N+1):
+#     if i == 1:
+#         continue #건너띄기
+#     elif i == 2:
+#         print(i)
+#     else:
+#         for j in range(2, int(i**1/2)+1) :
+#             if i%j == 0:
+#                 break
+#             elif j == int(i**1/2):
+#                 print(i)
+
+#1934 최소공배수
+
+t = int(input())        #횟수 구하는 부분
+for i in range(t):      #횟수만큼 반복
+    number1 = int(input("첫번째 숫자를 입력하세요: "))     #숫자 입력
+    number2 = int(input("두번째 숫자를 입력하세요: "))     #숫자 입력
+    b_num = 0   #큰 숫자 기준
+    if number1 > number2:          #숫자 비교
+        b_num = number1            #더 큰 숫자가
+    else:
+        b_num = number2
+
+    while True:
+        if b_num % number1 == 0 and b_num % number2 == 0 :
+            print("두 수의 최소 공배수는 %d 입니다." % b_num)
+            break
+        b_num += 1
+
+
+
+
+#최대공약수
+# t = int(input())
+# for i in range(t):
+#     m = int(input())
+#     n = int(input())
+#
+#     if m < n:
+#         bn = n
+#         sn = m
+#     else:
+#         bn = m
+#         sn = n
+# for i in range(sn+1,1,-1):
+#     if m%i==0 and n%i==0:
+#         anw = i
+#         break
+# print(anw)
+
+
+
+#실패
+# t = int(input())
+# for i in range(t):
+#     m = int(input())
+#     n = int(input())
+#     if m < n:
+#         bn = n
+#         sn = m
+#     else:
+#         bn = m
+#         sn = n
+#     while True:
+#         if bn%m==0 and bn%n==0:
+#             print(bn)
+#             break
+#         bn+1
+
+#-------------------------------
+
+#stack 구현
+'''
+def push(stack, data, max_length):
+    if len(stack) < max_length:
+        stack.append(data)
+        print(stack)
+    else:
+        print("overflow")
+    return stack
+
+def pop(stack):
+    if len(stack) > 0:
+        del stack[-1]
+        print(stack)
+    else:
+        print("underflow")
+
+max_length = 3
+stack = []
+
+while True:
+    que = input("Enter push or pop : ")
+
+    if que == "push":
+        data = int(input("Enter your number : "))
+        stack = push(stack, data, max_length)
+
+    elif que == "pop":
+        stack = pop(stack)
+
+def push(stack, data, max_length):
+    if len(stack) < max_length:
+        stack.append(data)
+        print(stack)
+    else:
+        print("overflow")
+
+    return stack
+
+
+def pop(stack):
+    if 0 < len(stack):
+        del stack[-1]
+        print(stack)
+    else:
+        print("underflow")
+    return stack
+
+
+max_length = 3
+stack = []
+
+while True:
+
+    que = input("Enter push or pop :")
+
+    if que == "push":
+        data = int(input("Enter your number :"))
+        stack = push(stack, data, max_length)
+
+    if que == "pop":
+        stack = pop(stack)
+'''
+#2747
+#1977
+#9095
+
+#-----------------------------------------
+#bubble정렬
+import random
+bub = []
+def make_random_list():
+    for i in range(10):
+        k = random.randrange(100)
+        bub.append(k)
+    return bub
+bub = make_random_list()
+print(bub)
+def make_bubble_list():
+    for i in range(len(bub)-1):
+        for j in range(len(bub)-i-1):
+            if bub[j] > bub[j + 1]:
+                bub[j], bub[j + 1] = bub[j + 1], bub[j]
+    return bub
+bub = make_bubble_list()
+print(bub)
+
+
